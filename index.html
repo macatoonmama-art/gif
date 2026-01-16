@@ -3,38 +3,234 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Do You Love Me?</title>
+  <title>For You 💖</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fde2e4; /* soft pink base */
+      overflow: hidden;
+      position: relative; /* allow absolutely positioned strawberries */
+    }
+
+    /* scattered strawberries */
+    .strawberry {
+      position: absolute;
+      font-size: 32px;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    /* Card */
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+      width: 90%;
+      max-width: 360px;
+      position: relative;
+      z-index: 10; /* keep above strawberries */
+    }
+
+    .gif {
+      width: 120px;
+      margin-bottom: 15px;
+    }
+
+    .panel {
+      display: none;
+      animation: fade 0.5s ease;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    button, .final-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      background-color: #ff8fab;
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    button:hover, .final-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .envelope {
+      width: 220px;
+      height: 140px;
+      background: #ffccd5;
+      margin: 0 auto;
+      position: relative;
+      border-radius: 10px;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffb3c6;
+      clip-path: polygon(0 0, 100% 0, 50% 55%);
+      transform-origin: top;
+      transition: transform 0.6s ease;
+      z-index: 3;
+    }
+
+    .letter {
+      background: white;
+      padding: 15px;
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: bottom 0.6s ease;
+      font-size: 13px;
+      color: #555;
+      z-index: 2;
+      overflow-y: auto;
+    }
+
+    .envelope.open .flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope.open .letter {
+      bottom: 0;
+    }
+
+    .final-text {
+      color: #ff4d6d;
+      margin-top: 10px;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
 
+  <!-- container -->
   <div class="container">
-    <!-- Cute Cat -->
-    <img
-      src="https://i.imgur.com/1X6R8YF.png"
-      alt="Cute Cat"
-      class="cat"
-    />
 
-    <h1>Do you love me? 🥰</h1>
-    <p class="subtitle">Chiku is all yours</p>
-
-    <div class="buttons">
-      <button id="yesBtn">Yes</button>
-      <button id="noBtn">No</button>
+    <!-- PANEL 1 -->
+    <div class="panel active">
+      <img src="https://media.giphy.com/media/vL8jVjKkqbVh2qdFj0/giphy.gif" alt="Cute gif" class="gif"/>
+      <h1>HALOOOOOOOOO IT'S ME</h1>
+      <button class="nextBtn">Next</button>
     </div>
 
-    <p id="message" class="hidden">
-      Yayyy 💕 I knew it! You just made my day 🥰
-    </p>
+    <!-- PANEL 2 -->
+    <div class="panel">
+      <img src="https://media.giphy.com/media/sQnEnK3iNd8K0bwW0x/giphy.gif" alt="Cute gif" class="gif"/>
+      <h1>ADI</h1>
+      <button class="nextBtn">Continue</button>
+    </div>
+
+    <!-- PANEL 3 -->
+    <div class="panel">
+      <img src="https://media.giphy.com/media/25aFms4yu9UidfGgL9/giphy.gif" alt="Cute gif" class="gif"/>
+      <div class="envelope" id="envelope">
+        <div class="flap"></div>
+        <div class="letter">
+          <p>
+            Before I continue to the main part, I just want to say sorry first if I ever offended you with the things I said last time.
+            I don’t think that you’re a bad person (hindi ko alam english ng maldita),
+            and I don’t think you’d ever wish something bad will happen to me
+            (like mabangga—wag naman po sana hahaha).
+            <br><br>
+            When we first met, you even brought me a gift, and I think that already shows how good of a person you really are.
+            I truly appreciate that.
+          </p>
+        </div>
+      </div>
+      <button class="nextBtn">Keep reading</button>
+    </div>
+
+    <!-- PANEL 4 -->
+    <div class="panel">
+      <img src="https://media.giphy.com/media/LBMiDWkCw0e53UOcm0/giphy.gif" alt="Final gif" class="gif"/>
+      <h1>I’ll be honest with you, Lian.</h1>
+      <p class="final-text">
+        I like you, and I want to take things further with you.
+      </p>
+      <a href="https://docs.google.com" target="_blank" class="final-btn">
+        Click this whenever you're ready
+      </a>
+    </div>
+
   </div>
 
   <!-- JS -->
-  <script src="script.js"></script>
+  <script>
+    const panels = document.querySelectorAll(".panel");
+    const nextBtns = document.querySelectorAll(".nextBtn");
+    const envelope = document.getElementById("envelope");
+
+    let currentPanel = 0;
+
+    nextBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        panels[currentPanel].classList.remove("active");
+        currentPanel++;
+        panels[currentPanel].classList.add("active");
+      });
+    });
+
+    envelope.addEventListener("click", () => {
+      envelope.classList.toggle("open");
+    });
+
+    // scatter 15 strawberries
+    const numStrawberries = 15;
+    for (let i = 0; i < numStrawberries; i++) {
+      const strawberry = document.createElement("div");
+      strawberry.className = "strawberry";
+      strawberry.textContent = "🍓";
+      strawberry.style.top = Math.random() * 100 + "%";
+      strawberry.style.left = Math.random() * 100 + "%";
+      document.body.appendChild(strawberry);
+    }
+  </script>
 </body>
 </html>
